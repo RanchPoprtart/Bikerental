@@ -1,28 +1,29 @@
 // Retrieve all Bike data
-var data =  `[ {
+var data =  [ {
+                "Id": "1",
 				"description": "Kids Bike",
-				"imagename": :w"kidsbike.jpg",
+				"imagename": "kidsbike.jpg",
 				"size": "20",
 				"color": "pink",
 				"status": "available"
 			},   { 
-
+                "Id": "2",
 				"description": "Beach Cruiser ",
-				"iamgename": :"kidsbike.jpg",
+				"imagename": "kidsbike.jpg",
 				"size": "20",
 				"color": "pink",
 				"status": "available"
-			}]`; 
+			}];
 
 			
 function getAllBikes() {
 	const xhr = new XMLHttpRequest();
-	xhr.onload = function () {
+	xhr.unload = function () {
 		displayData(this.responseText);
 	}
 	xhr.open("get", "getAllBikes.php");
 	xhr.send();
-}	
+}
 			//
 		
 			
@@ -84,5 +85,4 @@ function returnBike(bikeId) {
 }
 		
 //displayData(data)
-getAllBikes()		
-				
+getAllBikes()

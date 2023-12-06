@@ -1,58 +1,65 @@
 <?php
 
 /* echo `[ {
+                "bikeId": "1",
 				"description": "Kids Bike",
 				"imagename: "kidsbike.jpg",
 				"size": "20",
 				"color": "pink",
 				"status": "available"
-			},   { 
+			},   {
 
+                "bikeId": "2",
 				"description": "Beach Cruiser ",
-				"iamgename": :"kidsbike.jpg",
+				"imagename": "kidsbike.jpg",
 				"size": "20",
 				"color": "pink",
 				"status": "available"
-				
-			},     { 
 
+			},     {
+
+                "bikeId": "3",
 				"description": "Eletric Bike ",
-				"iamgename": :"eletricbike.jpg",
+				"imagename": "eletricbike.jpg",
 				"size": "18",
 				"color": "black",
 				"status": "available"
-				
-			},
-					{ 
 
+			},
+					{
+
+                "bikeId": "4",
 				"description": "Mountain Bike ",
-				"iamgename": :"mountainbike.jpg",
+				"imagename": "mountainbike.jpg",
 				"size": "20",
 				"color": "red",
 				"status": "available"
-				
-			},
-			
-					{ 
 
+			},
+
+					{
+
+                "bikeId": "5",
 				"description": "Street Bike ",
-				"iamgename": :"streetbike.jpg",
+				"imagename": "streetbike.jpg",
 				"size": "16",
 				"color": "grey",
 				"status": "available"
-				
-			},
-			
-					{ 
 
+			},
+
+					{
+
+                "bikeId": "6",
 				"description": "Ladies Bike ",
-				"iamgename": :"ladiesbike.jpg",
+				"imagename": "ladiesbike.jpg",
 				"size": "21",
 				"color": "blue",
 				"status": "available"
-				
+
 			},]`; ";
 */
+
 
 
 $conn = new mysqli("localhost", "root", "", "bikes");
@@ -64,12 +71,12 @@ if ($conn->connect_error) {
 
 $jsonString = "[";
 
-$sql = " SELECT * FROM bikes";
+$sql = " SELECT * FROM bike";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 	while ($row = $result->fetch_assoc()) {
-		$jsonString .= '{"Id": ' . $row["Id"] . ",";
+		$jsonString .= '{"bikeId": ' . $row["bikeId"] . ",";
 		$jsonString .= '"description": "' . $row["description"] . '",' ;
 		$jsonString .= '"imagename": "' . $row["imagename"] . '",';
 		$jsonString .= '"size": ' . $row["size"] . ',';
@@ -81,7 +88,7 @@ if ($result->num_rows > 0) {
 }
 
 
-$jsonString = rtrim($jsonString, ",");
+$jsonString = trim($jsonString, ",");
 $jsonString = $jsonString . "]";
 
 echo $jsonString;

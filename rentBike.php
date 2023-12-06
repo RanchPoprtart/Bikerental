@@ -4,7 +4,7 @@ if (!(isset($_GET["Id"]) and isset($_GET["renterName"]))) {
 
 }
 
-$conn = new mysqli("localhost", "root", "", "bikes");
+$conn = new mysqli("localhost", "root", "", "bikerentals");
 
 
 //$sql = "INSERT INTO history (renterName, daterented, bikesid)";

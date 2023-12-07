@@ -2,66 +2,69 @@
 <html lang="en">
 
 <head>
-	<title> Bikes </title>
-	<meta name='veiwport' content="width=device-width, inital-scale=1.0">
-	<link rel="stylesheet" >
-	
-	<style>
-		* {
-			box-sizing: border-box;
-		}
-		.listing {
-			border: 2px solid black;
-			width: 25%;
-			float: left;
-			margin-left: 10px;
-			margin-right: 10px;
-			background-color: gray;
-			
-		}
-		.pic {
-			float: left;
-		}
-		#main {
-		
-		}
-		#title {
-			text-align: center; 
-			background-color: solid pink;
-			border-bottom: 12px solid black;
-		}
-		.body{
-			padding-left:30px;
-		}
-		
-		
-	</style>
-	
-	
-	
+    <title>Bikes</title>
+    <meta name='viewport' content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Bikes.css">
 </head>
+
 <body>
-	<header>
-		<h2 id="title"> Bike Rentals </h2>
-	</header>
-	
+    <header>
+        <div class="banner">
+            <h1 id="title">Bike Rentals</h1>
+        </div>
+    </header>
 
+    <div class="container">
+        <div class="left-box">
+            <!-- Content for the left side (e.g., menu) -->
+        </div>
 
-		<div id="main">
-			<div class="listing">
-				<img src="kidsbike.jpg">
-				<div class="boxinfo"> Kids Bike
-				</b> <br>
-					<span> Size: 14"</span>
-					<span> Status: Available</span>
-					<button> Rent</button>
-				</div>
-			</div>
-		</div>
-	<div id="rentals">
-	
-		<script src="index.js">
-			</script>
-	</div>
+        <div class="right-box">
+            <div class="bike-listings">
+                <!-- Bike listings -->
+                <div class="listing">
+                    <img src="kidsbike.jpg">
+                    <div class="boxinfo">
+                        <b>Kids Bike</b><br>
+                        <span>Size: 14"</span>
+                        <span>Status: Available</span>
+                        <button>Rent</button>
+                    </div>
+                </div>
+                <!-- Add more bike listings here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="rentals">
+        <script src="index.js"></script>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Your existing code from index.js
+
+            function displayData(data) {
+                // Your code that updates innerHTML or manipulates elements
+            }
+
+            // Other functions or event listeners if you have
+
+            // Example asynchronous request (AJAX) handling data display
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    var data = JSON.parse(xhr.responseText);
+                    displayData(data);
+                } else {
+                    console.error('Failed to load data');
+                }
+            };
+            xhr.open('GET', 'getAllBikes.php', true);
+            xhr.send();
+        });
+    </script>
+getAllBikes()
 </body>
+
 </html>

@@ -15,10 +15,12 @@ var data =  [ {
 				"status": "available"
 			}];
 
+
+
 			
 function getAllBikes() {
 	const xhr = new XMLHttpRequest();
-	xhr.unload = function () {
+	xhr.onload = function () {
 		displayData(this.responseText);
 	}
 	xhr.open("get", "getAllBikes.php");
@@ -37,7 +39,7 @@ function displayData(jsonString) {
 		output += bike.imagename;
 		output += '"><b>' + bike.description + '</b><br><span>Size: ' + bike.size;
 		output += '"</span><br><span>Status:  ' + bike.status + '</span><br>';
-		if (bike.status == "Available") {		
+		if (bike.status.toLowerCase() == "available") {
 			output += '<button onclick="rentBike(' + bike.Id + ')">Rent</button></div>';
 		} else {
 			output += '<button onclick="returnBike(' + bike.Id + ')">Return</button></div>';
